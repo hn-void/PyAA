@@ -15,6 +15,7 @@ setup(
     entry_points = {
         'console_scripts': [
             'python_aa = pyaa.commands.python_aa:main',
+            'pusheen = pyaa.commands.pusheen:main',
         ]
     }
 )

@@ -25,3 +25,10 @@ def set_font_color_blue():
 
 def reset_font_change():
     print('\033[39m', end='')
+
+
+def animation_with_2(counter: int, frequency: int, aa_1: list, aa_2: list):
+    if counter % frequency < frequency / 2:
+        return aa_1
+    else:
+        return aa_2
