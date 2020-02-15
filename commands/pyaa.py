@@ -2,7 +2,13 @@ import argparse
 import shutil
 import time
 
-import pyaa
+import commands
+from commands.formatting import (
+    set_font_color_red,
+    set_font_color_green,
+    set_font_color_blue,
+    extract_aa,
+)
 
 
 python_aa = [
@@ -29,7 +35,7 @@ def parse():
         '--version',
         help='print product version and exit',
         action='version',
-        version=pyaa.__version__)
+        version=commands.__version__)
     parser.add_argument(
         '-t',
         '--time',
@@ -55,27 +61,14 @@ def parse():
     return args
 
 
-def extract_aa(num, aa_list, from_left=True):
-    extracted_aa = []
-    for aa in aa_list:
-        if from_left:
-            extracted_aa.append(aa[:num])
-        else:
-            if num == 0:
-                extracted_aa.append('')
-            else:
-                extracted_aa.append(aa[-num:])
-    return extracted_aa
-
-
 def main():
     args = parse()
     if args.red:
-        print('\033[31m', end='')
+        set_font_color_red()
     elif args.green:
-        print('\033[32m', end='')
+        set_font_color_green()
     elif args.blue:
-        print('\033[34m', end='')
+        set_font_color_blue()
 
     for i in range(SIZE_TERMINAL_COLUMNS+SIZE_AA_COLUMNS):
 
