@@ -1,11 +1,11 @@
 import os
-import pyaa
+import commands
 from setuptools import find_packages
 from distutils.core import setup
 
 setup(
     name = 'Python-AA',
-    version = pyaa.__version__,
+    version = commands.__version__,
     description = 'Python Ascii Art',
     author = 'ci11y',
     url = 'https://github.com/huyfififi/PyAA',
@@ -14,7 +14,7 @@ setup(
     install_requires=[],
     entry_points = {
         'console_scripts': [
-            'pyaa = pyaa.pyaa:main',
+            'pyaa = commands.pyaa:main',
         ]
     }
 )
