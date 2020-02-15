@@ -2,8 +2,8 @@ import argparse
 import shutil
 import time
 
-import commands
-from commands.formatting import (
+import pyaa
+from pyaa.utils.formatting import (
     set_font_color_red,
     set_font_color_green,
     set_font_color_blue,
@@ -35,7 +35,7 @@ def parse():
         '--version',
         help='print product version and exit',
         action='version',
-        version=commands.__version__)
+        version=pyaa.__version__)
     parser.add_argument(
         '-t',
         '--time',
