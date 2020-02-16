@@ -1,7 +1,12 @@
 # PyAA
 
+## Install
 ```bash
 $ pip install git+https://github.com/huyfififi/PyAA.git@master
+```
+
+## Usage
+```bash
 $ python_aa --help
 usage: pyaa [--time TIME] [--red] [--green] [--blue]
 
