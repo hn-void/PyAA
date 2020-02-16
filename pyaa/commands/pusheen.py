@@ -76,7 +76,7 @@ def parse():
         '-p',
         '--percentage',
         type=int,
-        default=30,
+        default=45,
         choices=range(0, 100+1),
         help='set percentage of distance (0 to 100)',
     )
@@ -102,23 +102,24 @@ def main():
             print('\033[{n}F'.format(n=SIZE_AA_ROWS+1))
 
     else:
-        for i in range(SIZE_TERMINAL_COLUMNS*2):
+        SIZE_TERMINAL_COLUMNS_TMP = int(SIZE_TERMINAL_COLUMNS*args.percentage/100)
+        for i in range(SIZE_TERMINAL_COLUMNS_TMP*2):
             swing_pusheen = animation_with_2(i, 10, PUSHEEN, PUSHEEN_SWING)
             if i < SIZE_AA_COLUMNS:
                 extracted_aa = extract_aa(i, swing_pusheen, from_left=True)
                 for line in extracted_aa:
-                    print(' '*(SIZE_TERMINAL_COLUMNS-i)+line+' '*(i-SIZE_AA_COLUMNS))
-            elif i <= SIZE_TERMINAL_COLUMNS:
+                    print(' '*((SIZE_TERMINAL_COLUMNS-SIZE_TERMINAL_COLUMNS_TMP)+SIZE_TERMINAL_COLUMNS_TMP-i)+line+' '*(i-SIZE_AA_COLUMNS))
+            elif i <= SIZE_TERMINAL_COLUMNS_TMP:
                 extracted_aa = swing_pusheen
                 for line in extracted_aa:
-                    print(' '*(SIZE_TERMINAL_COLUMNS-i)+line+' '*(i-SIZE_AA_COLUMNS))
-            elif i <= SIZE_TERMINAL_COLUMNS*2-SIZE_AA_COLUMNS:
+                    print(' '*((SIZE_TERMINAL_COLUMNS-SIZE_TERMINAL_COLUMNS_TMP)+SIZE_TERMINAL_COLUMNS_TMP-i)+line+' '*(i-SIZE_AA_COLUMNS))
+            elif i <= SIZE_TERMINAL_COLUMNS_TMP*2-SIZE_AA_COLUMNS:
                 extracted_aa = swing_pusheen
                 for line in extracted_aa:
-                    print(' '*(i-SIZE_TERMINAL_COLUMNS)+line+' '*(SIZE_AA_COLUMNS-i))
+                    print(' '*((SIZE_TERMINAL_COLUMNS-SIZE_TERMINAL_COLUMNS_TMP)+i-SIZE_TERMINAL_COLUMNS_TMP)+line+' '*(SIZE_AA_COLUMNS-i))
             else:
-                extracted_aa = extract_aa(SIZE_TERMINAL_COLUMNS*2-i, swing_pusheen, from_left=True)
+                extracted_aa = extract_aa(SIZE_TERMINAL_COLUMNS_TMP*2-i, swing_pusheen, from_left=True)
                 for line in extracted_aa:
-                    print(' '*(i-SIZE_TERMINAL_COLUMNS)+line+' '*(SIZE_AA_COLUMNS-i))
+                    print(' '*((SIZE_TERMINAL_COLUMNS-SIZE_TERMINAL_COLUMNS_TMP)+i-SIZE_TERMINAL_COLUMNS_TMP)+line+' '*(SIZE_AA_COLUMNS-i))
             time.sleep(args.time)
             print('\033[{n}F'.format(n=SIZE_AA_ROWS+1))
