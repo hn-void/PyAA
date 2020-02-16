@@ -123,18 +123,26 @@ def main():
                 if i < SIZE_AA_COLUMNS:
                     extracted_aa = extract_aa(i, swing_pusheen, from_left=True)
                     for line in extracted_aa:
-                        print(' '*((SIZE_TERMINAL_COLUMNS-SIZE_TERMINAL_COLUMNS_TMP)+SIZE_TERMINAL_COLUMNS_TMP-i)+line+' '*(i-SIZE_AA_COLUMNS))
+                        print(
+                            ' '*((SIZE_TERMINAL_COLUMNS-SIZE_TERMINAL_COLUMNS_TMP)+SIZE_TERMINAL_COLUMNS_TMP-i) +
+                            line+' '*(i-SIZE_AA_COLUMNS))
                 elif i <= SIZE_TERMINAL_COLUMNS_TMP:
                     extracted_aa = swing_pusheen
                     for line in extracted_aa:
-                        print(' '*((SIZE_TERMINAL_COLUMNS-SIZE_TERMINAL_COLUMNS_TMP)+SIZE_TERMINAL_COLUMNS_TMP-i)+line+' '*(i-SIZE_AA_COLUMNS))
+                        print(
+                            ' '*((SIZE_TERMINAL_COLUMNS-SIZE_TERMINAL_COLUMNS_TMP)+SIZE_TERMINAL_COLUMNS_TMP-i) +
+                            line+' '*(i-SIZE_AA_COLUMNS))
                 elif i <= SIZE_TERMINAL_COLUMNS_TMP*2-SIZE_AA_COLUMNS:
                     extracted_aa = swing_pusheen
                     for line in extracted_aa:
-                        print(' '*((SIZE_TERMINAL_COLUMNS-SIZE_TERMINAL_COLUMNS_TMP)+i-SIZE_TERMINAL_COLUMNS_TMP)+line+' '*(SIZE_AA_COLUMNS-i))
+                        print(
+                            ' '*((SIZE_TERMINAL_COLUMNS-SIZE_TERMINAL_COLUMNS_TMP)+i-SIZE_TERMINAL_COLUMNS_TMP) +
+                            line+' '*(SIZE_AA_COLUMNS-i))
                 else:
                     extracted_aa = extract_aa(SIZE_TERMINAL_COLUMNS_TMP*2-i, swing_pusheen, from_left=True)
                     for line in extracted_aa:
-                        print(' '*((SIZE_TERMINAL_COLUMNS-SIZE_TERMINAL_COLUMNS_TMP)+i-SIZE_TERMINAL_COLUMNS_TMP)+line+' '*(SIZE_AA_COLUMNS-i))
+                        print(
+                            ' '*((SIZE_TERMINAL_COLUMNS-SIZE_TERMINAL_COLUMNS_TMP)+i-SIZE_TERMINAL_COLUMNS_TMP) +
+                            line+' '*(SIZE_AA_COLUMNS-i))
                 time.sleep(args.time)
                 print('\033[{n}F'.format(n=SIZE_AA_ROWS+1))
