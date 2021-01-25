@@ -6,6 +6,9 @@ $ pip install git+https://github.com/huyfififi/PyAA.git@master
 ```
 
 ## Usage
+
+![pusheen_usage.gif](/docs/pusheen_usage.gif)
+
 ```bash
 $ python_aa --help
 usage: pyaa [--time TIME] [--red] [--green] [--blue]
